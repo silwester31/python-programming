@@ -1,0 +1,42 @@
+# Reading the five inputs
+transaction_amount = int(input())
+category = input()
+card_type = input()
+is_international = input()
+monthly_total_spend = int(input())
+
+# Step 1 & 2: Determine base cashback rate and add Platinum bonus if applicable
+rate = 0.0
+if category == "Grocery":
+    rate = 5.0
+elif category == "Fuel":
+    rate = 2.0
+elif category == "Online Shopping":
+    rate = 10.0
+elif category == "Others":
+    rate = 1.0
+
+if card_type == "Platinum":
+    rate += 2.0
+
+# Calculate initial cashback before caps
+cashback = transaction_amount * (rate / 100.0)
+
+# Step 3: Apply category-specific caps
+if category == "Fuel":
+    if transaction_amount > 3000:
+        cashback = 100.0
+elif category == "Online Shopping":
+    if cashback > 500:
+        cashback = 500.0
+
+# Step 4: Add monthly milestone bonus
+if monthly_total_spend > 50000:
+    cashback += 200.0
+
+# Step 5: Apply international transaction penalty
+if is_international == "true":
+    cashback = cashback * 0.5
+
+# Step 6: Print the final amount rounded to 2 decimal places
+print(f"{cashback:.2f}")
