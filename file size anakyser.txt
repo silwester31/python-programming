@@ -1,0 +1,10 @@
+# Read the total file size in bytes from the input
+total_bytes = int(input())
+
+# Calculate kilobytes and remaining bytes
+kilobytes = total_bytes // 1024
+remaining_bytes = total_bytes % 1024
+
+# Display the results in the required format
+print(f"Size: {kilobytes} KB")
+print(f"Remaining: {remaining_bytes} bytes")
