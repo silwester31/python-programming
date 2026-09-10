@@ -1,0 +1,42 @@
+import sys
+
+# Reading inputs
+ticket_type = sys.stdin.readline().strip()
+hours_before_departure = int(sys.stdin.readline().strip())
+loyalty_status = sys.stdin.readline().strip()
+seat_available = sys.stdin.readline().strip()
+paid_extra = int(sys.stdin.readline().strip())
+upgrade_cost = int(sys.stdin.readline().strip())
+
+# Part 1: Calculate Cancellation Refund Percentage
+refund_percentage = 0
+
+if ticket_type == "First":
+    refund_percentage = 100
+elif ticket_type == "Business":
+    if hours_before_departure >= 24:
+        refund_percentage = 90
+    elif hours_before_departure >= 12:
+        refund_percentage = 50
+    else:
+        if loyalty_status == "Gold":
+            refund_percentage = 25
+        else:
+            refund_percentage = 0
+elif ticket_type == "Economy":
+    if hours_before_departure >= 48:
+        refund_percentage = 70
+    elif hours_before_departure >= 24:
+        refund_percentage = 30
+    else:
+        refund_percentage = 0
+
+# Part 2: Determine Seat Upgrade Eligibility
+if seat_available == "true" and (loyalty_status == "Gold" or paid_extra >= upgrade_cost):
+    upgrade_status = "Approved"
+else:
+    upgrade_status = "Denied"
+
+# Printing results
+print(f"Refund: {refund_percentage}%")
+print(f"Upgrade: {upgrade_status}")
