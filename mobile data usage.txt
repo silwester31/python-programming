@@ -1,0 +1,12 @@
+# Input the total data usage in megabytes
+data_usage = int(input())
+
+# Calculate the complete number of gigabytes
+gigabytes = data_usage // 1024
+
+# Calculate the remaining megabytes
+megabytes = data_usage % 1024
+
+# Output the results
+print(gigabytes)
+print(megabytes)
