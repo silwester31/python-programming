@@ -1,0 +1,16 @@
+# Read the input number
+number = int(input())
+
+# Extract digits
+hundreds = number // 100
+tens = (number // 10) % 10
+units = number % 10
+
+# Calculate the sum
+digit_sum = hundreds + tens + units
+
+# Print the outputs line by line
+print(hundreds)
+print(tens)
+print(units)
+print(digit_sum)
